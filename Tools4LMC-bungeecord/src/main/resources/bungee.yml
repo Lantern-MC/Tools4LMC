@@ -1,0 +1,4 @@
+name: Tools4LMC
+version: '${project.version}'
+main: net.lanternmc.tools4lmc.Tools4LMCBungeeCord
+description: BC

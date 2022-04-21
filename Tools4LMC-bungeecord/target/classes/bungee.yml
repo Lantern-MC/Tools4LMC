@@ -1,0 +1,4 @@
+name: Tools4LMC
+version: '1.2.4-SNAPSHOT'
+main: net.lanternmc.tools4lmc.Tools4LMCBungeeCord
+description: BC

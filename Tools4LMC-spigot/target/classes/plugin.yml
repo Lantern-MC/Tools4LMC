@@ -1,0 +1,13 @@
+name: Tools4LMC
+version: '1.2.4-SNAPSHOT'
+main: net.lanternmc.Tools4LMCSpigot
+description: 计分板-名字-血条-动作条-定时器-MineCraft
+depend:
+  - PlaceholderAPI
+  - Vault
+  - ProtocolLib
+commands:
+  lmc:
+    description: 这是Tools4LMC - 1.3 服务器版 - 对接liteban
+    usage: /lmc
+

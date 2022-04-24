@@ -1,6 +1,7 @@
 package net.lanternmc.Tools4LMC;
 
 import net.lanternmc.Tools4LMC.GAuth.AdminMySQL;
+import net.lanternmc.Tools4LMC.GAuth.Checkperm;
 import net.lanternmc.Tools4LMCSpigot;
 
 import java.sql.SQLException;
@@ -26,6 +27,8 @@ public class Tools4LMC {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        Tools4LMCSpigot.getheart().getServer().getPluginManager().registerEvents(new Checkperm(), Tools4LMCSpigot.getheart());
+
     }
 
 }

@@ -53,12 +53,21 @@
 
     <repositories>
         <repository>
-            <id>public</id>
+            <id>Public</id>
             <url>http://10.7.7.3:8081/repository/Public/</url>
         </repository>
+         <repository>
+             <id>littleservice</id>
+             <url>https://lss233.littleservice.cn/repositories/minecraft</url>
+         </repository>
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.directory.studio</groupId>
+            <artifactId>org.apache.commons.codec</artifactId>
+            <version>1.8</version>
+        </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
@@ -69,7 +78,6 @@
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

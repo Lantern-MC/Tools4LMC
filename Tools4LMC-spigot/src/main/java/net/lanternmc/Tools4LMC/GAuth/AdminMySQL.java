@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class AdminMySQL {
 
-    public static String host = "10.7.7.3";
+    public static String host = "172.16.6.21";
     public static String db = "proxy";
     public static String user = "lanternmc";
     public static String pass = "lanterndata";
@@ -29,7 +29,11 @@ public class AdminMySQL {
     public static void CreateSQL() throws SQLException {
         // 执行查询
         System.out.println("创建表");
-        String yuju = "";
+        String yuju = "CREATE TABLE `proxy`.`t4lmc`  (\n" +
+                "  `Administrator` varchar(255) NULL COMMENT '管理员',\n" +
+                "  `SecretKey` varchar(255) NULL COMMENT '密钥',\n" +
+                "  `LastLogin` bigint NULL COMMENT '当时登录的时间戳'" +
+                ");";
         Statement stmt = conn.createStatement();
         System.out.println(stmt.executeUpdate(yuju));
     }

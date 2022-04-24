@@ -42,6 +42,8 @@ public class TabManager implements TabCompleter {
         main.add("boom");
         main.add("plugin");
         main.add("fly");
+        main.add("code");
+        main.add("createcode");
         return main;
     }
 }

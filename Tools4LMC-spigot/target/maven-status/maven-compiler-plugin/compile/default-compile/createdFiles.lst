@@ -22,6 +22,7 @@ net/lanternmc/Tools4LMC/CommandManager.class
 net/lanternmc/r1_8/File/Explorer$1.class
 net/lanternmc/AllUtils/JavaUtils/Column$ColumnChar.class
 net/lanternmc/Tools4LMC/Tools4LMC.class
+net/lanternmc/Tools4LMC/GAuth/Checkperm.class
 net/lanternmc/r1_8/Progress/ProgessWall.class
 net/lanternmc/Tools4LMC/TLMCListern.class
 net/lanternmc/r1_8/Particle/ParticleEffects$ParticlePacket.class
@@ -30,9 +31,12 @@ net/lanternmc/AllUtils/JavaUtils/EnumUtils.class
 net/lanternmc/r1_8/hologram/Hologram.class
 net/lanternmc/ExceptMC/ExceptMC.class
 net/lanternmc/r1_8/Scorebroad/ScoreBoard3/ScoreboardUtil$Component.class
+net/lanternmc/Example/GoogleAuthenticator.class
+net/lanternmc/r1_8/PlayerManager/Identifier.class
 net/lanternmc/Tools4LMC/TabManager.class
 net/lanternmc/r1_8/Command/CommandHandler$1.class
 net/lanternmc/AllUtils/AllUtils.class
+net/lanternmc/Tools4LMC/GAuth/MapinHand$1.class
 net/lanternmc/r1_8/Scorebroad/ScoreBoard3/ScoreboardUtil.class
 net/lanternmc/r1_8/Particle/ReflectionUtils$PackageType.class
 net/lanternmc/r1_8/File/ZipFileUtil.class
@@ -41,7 +45,6 @@ net/lanternmc/r1_8/Utils/Lists.class
 net/lanternmc/r1_8/BossBar/BossBarAPI.class
 net/lanternmc/r1_8/Cmd2/Cmd2.class
 net/lanternmc/r1_8/Command/AbstractCommand.class
-net/lanternmc/Tools4LMC/GAuth/GoogleAuthenticator.class
 net/lanternmc/r1_8/Particle/ParticleEffects$ParticlePacket$PacketInstantiationException.class
 net/lanternmc/r1_8/hologram/HologramManager.class
 net/lanternmc/r1_8/ItemManager/ItemBuilder.class
@@ -61,6 +64,7 @@ net/lanternmc/r1_8/Scorebroad/ScoreBoardTask.class
 net/lanternmc/AllUtils/MineCraft/AngleUtils$DegreeAngle.class
 net/lanternmc/r1_8/MySQL/MySQL.class
 net/lanternmc/r1_8/PlayerManager/BoomClient.class
+net/lanternmc/Tools4LMC/GAuth/DrawMap/DownloadQRImage.class
 net/lanternmc/r1_8/Utils/Arrays.class
 net/lanternmc/r1_8/BossBar/reflection/AccessUtil.class
 net/lanternmc/r1_8/Event/CoinsAPI.class
@@ -76,11 +80,12 @@ net/lanternmc/r1_8/Particle/ParticleRing.class
 net/lanternmc/r1_8/Scorebroad/ScoreBoard3/Reflection.class
 net/lanternmc/r1_8/Command/CommandResult$Type.class
 net/lanternmc/r1_8/Command/SimpleCommandMapWrapper.class
-net/lanternmc/Tools4LMC/GAuth/TimeSet.class
 net/lanternmc/r1_8/Particle/ParticleEffects.class
 net/lanternmc/r1_16/R1_16.class
 net/lanternmc/Tools4LMC/Backup.class
 net/lanternmc/r1_8/Command/CommandHandler.class
+net/lanternmc/Tools4LMC/GAuth/MapinHand.class
+net/lanternmc/Tools4LMC/GAuth/DrawMap/RenderImageMaps.class
 net/lanternmc/AllUtils/JavaUtils/ReflectUtil.class
 net/lanternmc/r1_8/Particle/ParticleEffects$ParticleProperty.class
 net/lanternmc/r1_8/Particle/ParticleEffects$ParticleData.class
@@ -98,6 +103,7 @@ net/lanternmc/r1_8/Scorebroad/ScoreBoard3/ScoreboardUtil$1.class
 net/lanternmc/r1_8/File/Explorer.class
 net/lanternmc/r1_8/Command/ConsoleCommand.class
 net/lanternmc/r1_8/Particle/ParticleEffects$ParticleColor.class
+net/lanternmc/Tools4LMC/GAuth/AdminMySQL.class
 net/lanternmc/r1_8/Particle/ParticleEffects$OrdinaryColor.class
 net/lanternmc/r1_8/Command/CommonMessage.class
 net/lanternmc/r1_8/Utils/Preconditions.class
@@ -106,6 +112,7 @@ net/lanternmc/r1_8/Scorebroad/Scoreboard2.class
 net/lanternmc/r1_8/PlayerManager/NameTagHideUtils.class
 net/lanternmc/r1_8/hologram/ColorUtils.class
 net/lanternmc/r1_8/PlayerManager/Chuli$1.class
+net/lanternmc/Tools4LMC/GAuth/SQLSave.class
 net/lanternmc/AllUtils/JavaUtils/ReportWriter$LogListBlock.class
 net/lanternmc/Tools4LMC/PluginTools.class
 net/lanternmc/r1_8/Tab/TagUtils.class
@@ -129,9 +136,9 @@ net/lanternmc/r1_8/PluginUtils/FlagUtil.class
 net/lanternmc/r1_8/Utils/bukkit/permission/PermissionWrapper.class
 net/lanternmc/r1_8/message/SendMessageUtils.class
 net/lanternmc/AllUtils/Base64/Base64Tools.class
+net/lanternmc/Tools4LMC/GAuth/GoogleAuth.class
 net/lanternmc/r1_8/Command/CombinedCommand.class
 net/lanternmc/r1_8/Particle/ParticleEffects$ParticleColorException.class
-net/lanternmc/r1_8/Server/ThreadUtil.class
 net/lanternmc/AllUtils/MineCraft/RailUtils.class
 net/lanternmc/r1_8/BossBar/reflection/Reflection.class
 net/lanternmc/r1_8/MySQL/SQLlite/SQLiteConnection.class

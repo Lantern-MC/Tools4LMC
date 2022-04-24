@@ -2,11 +2,17 @@ package net.lanternmc.Tools4LMC;
 
 import ch.ethz.ssh2.Connection;
 import net.lanternmc.ExceptMC.SSH.SshLinux;
+import net.lanternmc.Tools4LMC.GAuth.AdminMySQL;
+import net.lanternmc.Tools4LMC.GAuth.Checkperm;
+import net.lanternmc.Tools4LMC.GAuth.GoogleAuth;
+import net.lanternmc.Tools4LMC.GAuth.MapinHand;
 import net.lanternmc.Tools4LMCSpigot;
 import net.lanternmc.r1_8.PlayerManager.BoomClient;
 import net.lanternmc.r1_8.PlayerManager.Chuli;
 import net.lanternmc.r1_8.Title.TitleUtils;
 import net.lanternmc.r1_8.message.SendMessageUtils;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,7 +21,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import javax.xml.crypto.Data;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,7 +39,30 @@ public class CommandManager implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length == 0) {sender.sendMessage("§4/lmc help");return true;}
+        if (args.length == 0) {
+            if (sender.hasPermission("Tools.lanternmc.staff")) {
+                SendMessageUtils.sendMessage(sender
+                        , "§n---------------------"
+                        , "§7 我的世界§cLanternMC§7服务器 §6核心插件T4LMC 帮助信息"
+                        , ""
+                        , "§f/lmc ssh ip userName userPwd cmd  --  §6远程ssh链接"
+                        , "§f/lmc createcode  --  §6创建"
+                        , "§f/lmc code <6个数字>  --  §630秒验证自己验证器中的Code"
+                        , "§f/lmc list  --  §6插件列表"
+                        , "§f/lmc freeze <player>  --  §6冻结外挂"
+                        , "§f/lmc boom <player>  --  §6爆炸客户端"
+                        , "§f/lmc plugin <load/unload/reload> <插件名字>  --  §6插件管理"
+                        , "§f/lmc fly [player]  --  §6飞行"
+                        , "§n---------------------"
+                );
+                return true;
+            } else {
+                SendMessageUtils.sendMessage(sender
+                        , "§9 我的世界§cLanternMC§9服务器 §6核心插件T4LMC 玩家帮助信息"
+                        , "§f/lmc fly [player]  §6给你或者玩家权限仅限投币玩家");
+                return true;
+            }
+        }
         //爆炸客户端
         if(args[0].equals("boom")){
             if (!sender.hasPermission("Tools.lanternmc.boom")) {
@@ -94,32 +129,53 @@ public class CommandManager implements CommandExecutor {
                 }
 
                 if(args[0].equals("testchuli")) {
-                    Chuli.Powner(p, Tools4LMCSpigot.getheart());
-                    if (args[1].equals("stop")) {
-                        Chuli.task.cancel();
+                    TextComponent abc = new TextComponent();
+                    abc.setText("abc");
+                    ClickEvent ce = new ClickEvent(ClickEvent.Action.OPEN_URL,
+                            "https%3A%2F%2Fwww.google.com%2Fchart%3Fchs%3D128x128hld%3DM%257C0ht%3Dqrhl%3Dotpauth%3A%2F%2Ftotp%2FSmallXY%4043.248.79.31%3Fsecret%3DXHF6UWINRKFPO4MF");
+                    abc.setClickEvent(ce);
+                    p.spigot().sendMessage(abc);
+                }
+
+                //验证args[1]输的对吗
+                if(args[0].equals("code")) {
+                    String s = null;
+                    try {
+                        PreparedStatement statements =
+                                AdminMySQL.conn.prepareStatement("SELECT * FROM t4lmc WHERE `Administrator` = '" + p.getName() + "'");
+                        ResultSet resultSet = statements.executeQuery();
+                        if (resultSet.next()) {
+                            s = resultSet.getString("SecretKey");
+                        }
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                    GoogleAuth ga = new GoogleAuth();
+                    if (ga.authcode(args[1], s)) {
+                        //验证成功后更新lastlogin和删除限制
+                        long time = new Date().getTime();
+                        String data = "UPDATE t4lmc SET LastLogin=\""+ time +"\" WHERE Administrator=\"" + p.getName() + "\";";
+                        try {
+                            Statement stmt = AdminMySQL.conn.createStatement();
+                            stmt.executeUpdate(data);
+                        } catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                        }
+                        Checkperm.stats.remove(p);
+                        p.sendMessage("§6 OK!");
+                    } else {
+                        p.sendMessage("§6 错误!");
                     }
                 }
 
-                if(args[0].equals("code")) {
-
+                //创建Code 管理需要手动 创建不然 下次登陆时判定你是对服务器的安全不负责任
+                if(args[0].equals("createcode")) {
+                    MapinHand.Run(p);
                 }
 
                 //查看谁依赖我
                 if(args[0].equals("list")) {
                     sender.sendMessage(String.valueOf(Tools4LMCSpigot.getheart().getCommand("plugin").getExecutor()));
-                }
-                //Staff帮助
-                if(args[0].equals("help")) {
-                    SendMessageUtils.sendMessage(sender
-                            , "§9 我的世界§cLanternMC§9服务器 §6核心插件T4LMC 帮助信息"
-                            , "§c/lmc ssh ip userName userPwd cmd   §6远程ssh链接"
-                            , "§c/lmc code <6个数字> §630秒验证自己验证器中的Code"
-                            , "§c/lmc help  §6帮助"
-                            , "§c/lmc list  §6插件列表"
-                            , "§c/lmc freeze <player>  §6冻结外挂"
-                            , "§c/lmc boom <player>  §6爆炸客户端"
-                            , "§c/lmc plugin <load/unload/reload> <插件名字>  §6插件管理"
-                            , "§c/lmc fly [player]  §6飞行");
                 }
                 //freeze冻结
                 if (args.length == 2) {
@@ -135,13 +191,6 @@ public class CommandManager implements CommandExecutor {
                     }
                 }
             } else {
-                //玩家帮助
-                if(args[0].equals("help")) {
-                    SendMessageUtils.sendMessage(sender
-                            , "§9 我的世界§cLanternMC§9服务器 §6核心插件T4LMC 玩家帮助信息"
-                            , "§f/lmc help   §6查看LanternMC官方工具插件的帮助"
-                            , "§f/lmc fly [player]  §6给你或者玩家权限仅限投币玩家");
-                }
                 return true;
             }
 

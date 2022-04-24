@@ -3,6 +3,7 @@ package net.lanternmc.Tools4LMC;
 import net.lanternmc.Tools4LMCSpigot;
 import net.lanternmc.r1_8.File.FolderUtil;
 
+import java.awt.*;
 import java.io.File;
 
 public class Backup {
@@ -15,7 +16,7 @@ public class Backup {
 
         File panding = new File(BukkitPath.getAbsolutePath() + "/Backup");
         if (panding.exists()){
-            Tools4LMCSpigot.getheart().getLogger().info("服务器开启了备份功能哦!开始重置备份");
+            System.out.print("服务器开启了备份功能哦!开始重置备份");
             FolderUtil.delFolder(BukkitPath.getAbsolutePath() + "/world");
             try {
                 Thread.sleep(2000);
@@ -23,7 +24,7 @@ public class Backup {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Tools4LMCSpigot.getheart().getLogger().info("重制地图完成");
+            System.out.print("重制地图完成");
         } // 有文件夹就进行
     }
 

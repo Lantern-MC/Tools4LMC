@@ -46,9 +46,11 @@ public class MapinHand {
 //        text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, bc));
 //        p.spigot().sendMessage(text);
 
-        p.sendMessage("§6 点击开始扫码绑定吧(如果出现打不开可找腐竹或者Dev寻求帮助)" +
-                "需要手机软件 <身份验证器APP> " +
-                "进行 后期会开发扫码登陆等高级向...." +
+        p.sendMessage("§6点击链接或者扫地图上的二维码\n" +
+                "§6如果出现打不开或者不显示\n" +
+                "§6可找腐竹或者Dev寻求帮助\n" +
+                "§6需要手机软件 §e<身份验证器APP> \n" +
+                "§7后期会开发扫码登陆等高级向...." +
                 " \n§r" + url);
         SendMessageUtils.sendconsoleMessage(new String[]{url});
 

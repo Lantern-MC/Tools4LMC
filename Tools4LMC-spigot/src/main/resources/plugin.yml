@@ -6,6 +6,7 @@ depend:
   - PlaceholderAPI
   - Vault
   - ProtocolLib
+load: POSTWORLD
 commands:
   lmc:
     description: 这是Tools4LMC - 1.3 服务器版 - 对接liteban

@@ -8,7 +8,7 @@
     <parent>
         <groupId>net.lanternmc</groupId>
         <artifactId>Tools4LMC</artifactId>
-        <version>1.2.5</version>
+        <version>1.2.7</version>
     </parent>
 
     <artifactId>Tools4LMC-bungeecord</artifactId>
@@ -34,6 +34,19 @@
             </resource>
         </resources>
     </build>
+
+
+
+    <distributionManagement>
+        <repository>
+            <id>lanternmc</id>
+            <url>http://10.7.7.3:8081/repository/lanternmc/</url>
+        </repository>
+        <snapshotRepository>
+            <id>lanternmc</id>
+            <url>http://10.7.7.3:8081/repository/lanternmc/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <repositories>
         <repository>

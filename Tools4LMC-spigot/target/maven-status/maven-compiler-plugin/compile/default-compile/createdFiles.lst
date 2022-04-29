@@ -1,4 +1,3 @@
-net/lanternmc/r1_8/Event/CoinsAPI$1.class
 net/lanternmc/r1_8/Particle/ParticleEffects$ItemData.class
 net/lanternmc/AllUtils/Base64/baseTools.class
 net/lanternmc/r1_8/Particle/ReflectionUtils$DataType.class
@@ -11,6 +10,7 @@ net/lanternmc/AllUtils/JavaUtils/Column$ColumnString.class
 net/lanternmc/r1_8/Particle/ReflectionUtils.class
 net/lanternmc/r1_8/Event/CooldownAPI.class
 net/lanternmc/r1_8/Command/PlayerCommand.class
+net/lanternmc/java/main.class
 net/lanternmc/r1_8/Tab/TabControl$1.class
 net/lanternmc/r1_8/Command/CommandResult.class
 net/lanternmc/r1_8/Particle/ParticleEffects$ParticlePacket$PacketSendingException.class
@@ -52,7 +52,6 @@ net/lanternmc/r1_8/Tab/TabUtils.class
 net/lanternmc/r1_8/Particle/ParticleEffects$ParticleVersionException.class
 net/lanternmc/r1_8/ItemManager/FireworkUtils.class
 net/lanternmc/r1_8/Event/LongpressEvent.class
-net/lanternmc/r1_8/Event/CoinsAPI$2.class
 net/lanternmc/r1_8/Command/TabResult.class
 net/lanternmc/ExceptMC/SSH/SshLinux.class
 net/lanternmc/r1_8/MobConsole/EntityNear.class
@@ -67,14 +66,16 @@ net/lanternmc/r1_8/PlayerManager/BoomClient.class
 net/lanternmc/Tools4LMC/GAuth/DrawMap/DownloadQRImage.class
 net/lanternmc/r1_8/Utils/Arrays.class
 net/lanternmc/r1_8/BossBar/reflection/AccessUtil.class
-net/lanternmc/r1_8/Event/CoinsAPI.class
+net/lanternmc/Lanternlevel/CoinsAPI$1.class
 net/lanternmc/r1_8/Scorebroad/ScoreBoardUtils.class
 net/lanternmc/r1_8/Title/TitleUtils.class
 net/lanternmc/Tools4LMC/PluginControl.class
 net/lanternmc/r1_8/components/ServerConn.class
+net/lanternmc/Lanternlevel/llevel.class
 net/lanternmc/Tools4LMC/CommandManager$1.class
 net/lanternmc/r1_8/Scorebroad/ScoreBoard3/PlaceHolders.class
 net/lanternmc/r1_8/Particle/ParticleEffects$ParticleDataException.class
+net/lanternmc/Lanternlevel/CoinsAPI.class
 net/lanternmc/r1_8/PlayerManager/Chuli$2.class
 net/lanternmc/r1_8/Particle/ParticleRing.class
 net/lanternmc/r1_8/Scorebroad/ScoreBoard3/Reflection.class
@@ -119,8 +120,10 @@ net/lanternmc/r1_8/Tab/TagUtils.class
 net/lanternmc/r1_8/File/St.class
 net/lanternmc/r1_8/Particle/ParticleEffects$ParticlePacket$VersionIncompatibleException.class
 net/lanternmc/r1_8/BossBar/BossBar.class
+net/lanternmc/Lanternlevel/CoinsAPI$2.class
 net/lanternmc/r1_8/Command/Command.class
 net/lanternmc/AllUtils/MineCraft/SignUtils.class
+net/lanternmc/Tools4LMC/GAuth/codeCMD.class
 net/lanternmc/r1_8/Particle/ParticleLine.class
 net/lanternmc/r1_8/BossBar/reflection/NMUClass.class
 net/lanternmc/Tools4LMC/PluginsManager.class
@@ -139,7 +142,10 @@ net/lanternmc/AllUtils/Base64/Base64Tools.class
 net/lanternmc/Tools4LMC/GAuth/GoogleAuth.class
 net/lanternmc/r1_8/Command/CombinedCommand.class
 net/lanternmc/r1_8/Particle/ParticleEffects$ParticleColorException.class
+net/lanternmc/r1_8/Server/ThreadUtil.class
+net/lanternmc/qqbot/Messsge.class
 net/lanternmc/AllUtils/MineCraft/RailUtils.class
 net/lanternmc/r1_8/BossBar/reflection/Reflection.class
 net/lanternmc/r1_8/MySQL/SQLlite/SQLiteConnection.class
 net/lanternmc/r1_8/BossBar/reflection/ClassBuilder.class
+net/lanternmc/qqbot/IEventHandler.class

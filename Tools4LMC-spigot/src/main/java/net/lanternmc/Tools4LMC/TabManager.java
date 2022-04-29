@@ -21,6 +21,7 @@ public class TabManager implements TabCompleter {
             }
             return playerlist;
         }
+
         if(args[0].equals("plugin")) {
             if(args[1].endsWith("load")){
                 List<String> plugins = new ArrayList<>();
@@ -44,6 +45,7 @@ public class TabManager implements TabCompleter {
         main.add("fly");
         main.add("code");
         main.add("createcode");
+        main.add("testEvent");
         return main;
     }
 }

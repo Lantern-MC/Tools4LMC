@@ -2,10 +2,7 @@ package net.lanternmc.Tools4LMC;
 
 import ch.ethz.ssh2.Connection;
 import net.lanternmc.ExceptMC.SSH.SshLinux;
-import net.lanternmc.Tools4LMC.GAuth.AdminMySQL;
-import net.lanternmc.Tools4LMC.GAuth.Checkperm;
-import net.lanternmc.Tools4LMC.GAuth.GoogleAuth;
-import net.lanternmc.Tools4LMC.GAuth.MapinHand;
+import net.lanternmc.Tools4LMC.GAuth.*;
 import net.lanternmc.Tools4LMCSpigot;
 import net.lanternmc.r1_8.PlayerManager.BoomClient;
 import net.lanternmc.r1_8.PlayerManager.Chuli;
@@ -14,6 +11,7 @@ import net.lanternmc.r1_8.message.SendMessageUtils;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -42,8 +40,9 @@ public class CommandManager implements CommandExecutor {
         if (args.length == 0) {
             if (sender.hasPermission("Tools.lanternmc.staff")) {
                 SendMessageUtils.sendMessage(sender
-                        , "§n---------------------"
+                        , "§m---------------------"
                         , "§7 我的世界§cLanternMC§7服务器 §6核心插件T4LMC 帮助信息"
+                        , "§eV" + Tools4LMCSpigot.getheart().getDescription().getVersion()
                         , ""
                         , "§f/lmc ssh ip userName userPwd cmd  --  §6远程ssh链接"
                         , "§f/lmc createcode  --  §6创建"
@@ -53,13 +52,18 @@ public class CommandManager implements CommandExecutor {
                         , "§f/lmc boom <player>  --  §6爆炸客户端"
                         , "§f/lmc plugin <load/unload/reload> <插件名字>  --  §6插件管理"
                         , "§f/lmc fly [player]  --  §6飞行"
-                        , "§n---------------------"
+                        , "§m---------------------"
                 );
                 return true;
             } else {
                 SendMessageUtils.sendMessage(sender
+                        , "§m---------------------"
                         , "§9 我的世界§cLanternMC§9服务器 §6核心插件T4LMC 玩家帮助信息"
-                        , "§f/lmc fly [player]  §6给你或者玩家权限仅限投币玩家");
+                        , "§eV" + Tools4LMCSpigot.getheart().getDescription().getVersion()
+                        , ""
+                        , "§f/lmc fly [player]  --  §6飞行"
+                        , "§m---------------------"
+                );
                 return true;
             }
         }
@@ -128,44 +132,13 @@ public class CommandManager implements CommandExecutor {
                     }
                 }
 
-                if(args[0].equals("testchuli")) {
-                    TextComponent abc = new TextComponent();
-                    abc.setText("abc");
-                    ClickEvent ce = new ClickEvent(ClickEvent.Action.OPEN_URL,
-                            "https%3A%2F%2Fwww.google.com%2Fchart%3Fchs%3D128x128hld%3DM%257C0ht%3Dqrhl%3Dotpauth%3A%2F%2Ftotp%2FSmallXY%4043.248.79.31%3Fsecret%3DXHF6UWINRKFPO4MF");
-                    abc.setClickEvent(ce);
-                    p.spigot().sendMessage(abc);
+                if(args[0].equals("testEvent")) {
+                    p.sendMessage(ChatColor.DARK_RED + "暂无测试内容");
                 }
 
                 //验证args[1]输的对吗
                 if(args[0].equals("code")) {
-                    String s = null;
-                    try {
-                        PreparedStatement statements =
-                                AdminMySQL.conn.prepareStatement("SELECT * FROM t4lmc WHERE `Administrator` = '" + p.getName() + "'");
-                        ResultSet resultSet = statements.executeQuery();
-                        if (resultSet.next()) {
-                            s = resultSet.getString("SecretKey");
-                        }
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
-                    }
-                    GoogleAuth ga = new GoogleAuth();
-                    if (ga.authcode(args[1], s)) {
-                        //验证成功后更新lastlogin和删除限制
-                        long time = new Date().getTime();
-                        String data = "UPDATE t4lmc SET LastLogin=\""+ time +"\" WHERE Administrator=\"" + p.getName() + "\";";
-                        try {
-                            Statement stmt = AdminMySQL.conn.createStatement();
-                            stmt.executeUpdate(data);
-                        } catch (SQLException throwables) {
-                            throwables.printStackTrace();
-                        }
-                        Checkperm.stats.remove(p);
-                        p.sendMessage("§6 OK!");
-                    } else {
-                        p.sendMessage("§6 错误!");
-                    }
+                    codeCMD.Run(args, p);
                 }
 
                 //创建Code 管理需要手动 创建不然 下次登陆时判定你是对服务器的安全不负责任
@@ -173,9 +146,9 @@ public class CommandManager implements CommandExecutor {
                     MapinHand.Run(p);
                 }
 
-                //查看谁依赖我
+                //Pliugins
                 if(args[0].equals("list")) {
-                    sender.sendMessage(String.valueOf(Tools4LMCSpigot.getheart().getCommand("plugin").getExecutor()));
+                    sender.sendMessage("§4没写到时候有时间一定写");
                 }
                 //freeze冻结
                 if (args.length == 2) {

@@ -33,12 +33,4 @@ public final class Tools4LMCSpigot extends JavaPlugin {
     }
 
 
-
-    @Override
-    public void onLoad() {
-        new Backup().RecoveryBuild();
-    }
-
-
-
 }
